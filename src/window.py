@@ -79,7 +79,7 @@ class soundjamWindow(Handy.ApplicationWindow):
         self.add_to_soundboard(data=None)
 
     def on_scroll(self, vadjustment, value):
-        if vadjustment.props.value < 0.8 * (vadjustment.props.upper - vadjustment.props.page_size):
+        if vadjustment.props.value > 0.8 * (vadjustment.props.upper - vadjustment.props.page_size):
             self.header.get_style_context().add_class("hidden")
             self.header.set_visible(False)
             self.soundboard_view.props.margin_top = 20
@@ -184,6 +184,10 @@ class soundjamWindow(Handy.ApplicationWindow):
     @HelperUtils.run_async
     def add_to_soundboard(self, data):
         if data is not None:
+            for child in self.soundboard_view.get_children():
+                print(child.get_children()[0].props.name)
+                if child.get_children()[0].props.name == "placeholders":
+                    child.destroy()
             target = data.get_target()
             # print(str(target))
             if str(target) == "text/uri-list":
@@ -204,6 +208,7 @@ class soundjamWindow(Handy.ApplicationWindow):
                 grid.set_size_request(160, 120)
                 # grid.get_style_context().add_class("clip-containers")
                 eventbox = Gtk.EventBox()
+                eventbox.props.name = "placeholders"
                 eventbox.props.expand = True
                 eventbox.set_size_request(160, 120)
                 # eventbox.get_style_context().add_class("clip-containers")
