@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=soundjam
+Exec=com.github.hezral.soundjam
+Icon=com.github.hezral.soundjam
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

@@ -1,0 +1,21 @@
+app-id: com.github.hezral.soundjam
+runtime: io.elementary.Platform
+runtime-version: '6'
+sdk: io.elementary.Sdk
+command: com.github.hezral.soundjam
+appstream-compose: false
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=network
+  - --socket=pulseaudio
+  # needed for perfers-color-scheme
+  - --system-talk-name=org.freedesktop.Accounts
+  - --filesystem=home
+  - --filesystem=host:ro
+modules:
+  - name: soundjam
+    buildsystem: meson
+    sources:
+      - type: dir
+        path: .

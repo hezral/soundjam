@@ -1,0 +1,6 @@
+data/com.github.hezral.soundjam.desktop.in
+data/com.github.hezral.soundjam.appdata.xml.in
+data/com.github.hezral.soundjam.gschema.xml
+src/main.py
+src/window.py
+
